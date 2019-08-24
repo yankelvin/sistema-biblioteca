@@ -8,7 +8,7 @@ const server = require("http").Server(app);
 //const io = require("socket.io")(server);
 
 mongoose.connect(
-  "mongodb+srv://sistemabiblioteca:super@cluster0-l4wt5.mongodb.net/test?retryWrites=true&w=majority",
+  "mongodb+srv://@sistemabiblioteca-yyikv.mongodb.net/test?retryWrites=true&w=majority",
   {
     useNewUrlParser: true
   }

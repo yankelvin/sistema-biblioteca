@@ -14,5 +14,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 routes.get("/api/books", jsonParser, BookController.index);
 routes.post("/api/new/book", jsonParser, BookController.store);
+routes.put("/api/update/book", jsonParser, BookController.update);
+routes.delete("/api/delete/book", jsonParser, BookController.delete);
 
 module.exports = routes;
