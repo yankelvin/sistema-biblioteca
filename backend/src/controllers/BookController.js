@@ -29,7 +29,7 @@ module.exports = {
       area,
       purchaseDate,
       pricePaid
-    });
+    }, { omitUndefined: true });
     return res.json({ book });
   }
   ,
