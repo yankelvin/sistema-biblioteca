@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import "date-fns";
-import datePicker from './Components/datePicker.js'
+import BotaoSucesso from './Components/BotaoSucesso.js';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -147,7 +147,6 @@ export default class PersonList extends React.Component {
                     </MuiPickersUtilsProvider>
 
                     <br />
-
                     <InputLabel
                         htmlFor="preco"
                         style={{ marginRight: 450 }}
@@ -159,14 +158,12 @@ export default class PersonList extends React.Component {
                         //  value={values.amount}
                         // onChange={handleChange('amount')}
                         startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                        style={{ marginRight: 100, width: 240 }}
+                        style={{ marginRight: 310, width: 240 }}
 
                     />
 
-                    <Button variant="contained" type="submit" color="primary" size="large" >
-                        <SaveIcon />
-                        Salvar
-                </Button>
+                <BotaoSucesso />
+
                     <Button href="/" color="primary">
                         Cancelar
                   </Button>
