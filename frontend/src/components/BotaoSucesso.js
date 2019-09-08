@@ -84,7 +84,7 @@ const useStyles2 = makeStyles(theme => ({
   },
 }));
 
-export default function CustomizedSnackbars() {
+export default function CustomizedSnackbars(props) {
   const classes = useStyles2();
   const [open, setOpen] = React.useState(false);
 
@@ -103,7 +103,7 @@ export default function CustomizedSnackbars() {
   return (
     <div align='center'>
       <br />
-      <Button variant="contained" color='primary' className={classes.margin} onClick={handleClick}>
+      <Button variant="contained" color='primary' className={classes.margin} onClick={props.handleSubmit}>
 salvar      </Button>
       <Snackbar
         anchorOrigin={{

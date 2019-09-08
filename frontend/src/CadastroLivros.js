@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import "date-fns";
-import BotaoSucesso from './Components/BotaoSucesso.js';
+import BotaoSucesso from './components/BotaoSucesso';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -22,14 +22,19 @@ import {
 
 export default class PersonList extends React.Component {
 
-    state = {
-        nomeLivro: '',
-        nomeAutor: '',
-        nomeEditora: '',
-        area: '',
-
+    constructor(props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {
+            name: "A Lei do triunfo",
+            author: "Napoleon Hill",
+            publisher: "Sextante",
+            yearPublication: "2015",
+            area: "Negócios",
+            purchaseDate: "15/01/2017",
+            pricePaid: "46,90"
+        }
     }
-
 
     handleChange = event => {
         this.setState({ name: event.target.value });
@@ -39,11 +44,9 @@ export default class PersonList extends React.Component {
         event.preventDefault();
 
 
-        const user = {
-            name: this.state.name
-        };
+        const book = this.state;
 
-        axios.post('http://localhost:3000/api/new/book', { user })
+        axios.post('http://localhost:3333/api/new/book', book)
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -162,7 +165,7 @@ export default class PersonList extends React.Component {
 
                     />
 
-                <BotaoSucesso />
+                <BotaoSucesso handleSubmit={this.handleSubmit}/>
 
                     <Button href="/" color="primary">
                         Cancelar
