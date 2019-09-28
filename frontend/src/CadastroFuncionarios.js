@@ -5,35 +5,31 @@ import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import "date-fns";
 import axios from 'axios';
+import BotaoSucesso from './components/BotaoSucesso';
 
 //import Grid from '@material-ui/core/Grid';
 
 
 export default class PersonList extends React.Component {
-    state = {
-        name: '',
-        oabNumber: '',
-    
-
+    constructor() {
+        super();
+        //this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {
+            name: '',
+            oabNumber: '',
+            //password: '',
+        }
     }
   
-    handleChange = event => {
-      this.setState({ name: event.target.value });
-      this.setState({ oabNumber: event.target.value });
-
-    }
+    handleNameChange = event => {this.setState({ name: event.target.value })}
+    handleOabNumberChange = event => {this.setState({ oabNumber: event.target.value })}
   
     handleSubmit = event => {
       event.preventDefault();
-    
-  
-      const user = {
-        name: this.state.name,
-        oabNumber: this.state.oabNumber
 
-      };
+      const { name, oabNumber } = this.state;
   
-      axios.post('/api/new/employee', { user })
+      axios.post('http://localhost:3333/api/new/employee', { name: this.state.name, oabNumber: this.state.oabNumber })
         .then(res => 
             {
           console.log(res);
@@ -60,9 +56,9 @@ export default class PersonList extends React.Component {
             <TextField
                 id="name"
                 label="Nome do Funcionário*"
-                //className={classes.textField}
+                name = "this.state.name"
                 // value={values.name}
-                // onChange={handleChange('name')}
+                onChange={this.handleNameChange}
                 margin="normal"
                 variant="standard"
                 style={{ width: 550 }}
@@ -72,19 +68,16 @@ export default class PersonList extends React.Component {
             <TextField
                 id="oabNumber"
                 label="Número OAB"
-                //className={classes.textField}
+                name = "this.state.oabNumber"
                 // value={values.name}
-                // onChange={handleChange('name')}
+                onChange={this.handleOabNumberChange}
                 margin="normal"
                 variant="standard"
                 style={{ width: 550 }}
 
             />
         <br></br>
-            <Button  variant="contained" type="submit" color="primary" size="large" >
-                <SaveIcon />
-                Salvar
-                </Button>
+            <BotaoSucesso href = "/"/>
             <Button href="/" color="primary">
                 Cancelar
                   </Button>

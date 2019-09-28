@@ -3,7 +3,7 @@ import Header from './Layout/Header.js';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
-import "date-fns";
+//import "date-fns";
 import BotaoSucesso from './components/BotaoSucesso';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Input from '@material-ui/core/Input';
@@ -22,31 +22,33 @@ import {
 
 export default class PersonList extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
+    constructor() {
+        super();
         this.state = {
-            name: "A Lei do triunfo",
-            author: "Napoleon Hill",
-            publisher: "Sextante",
-            yearPublication: "2015",
-            area: "Negócios",
-            purchaseDate: "15/01/2017",
-            pricePaid: "46,90"
+            name: '',
+            author: '',
+            publisher: '',
+            yearPublication: '',
+            area: '',
+            purchaseDate: '',
+            pricePaid: '',
         }
     }
 
-    handleChange = event => {
-        this.setState({ name: event.target.value });
-    }
+    handleNameChange = event => {this.setState({ name: event.target.value })}
+    handleAuthorChange = event => {this.setState({ author: event.target.value })}
+    handlePublisherChange = event => {this.setState({ publisher: event.target.value })}
+    handleYearPublicationChange = event => {this.setState({ yearPublication: event.target.value })}
+    handleAreaChange = event => {this.setState({ area: event.target.value })}
+    handlePurchaseDateChange = event => {this.setState({ purchaseDate: event.target.value })}
+    handlePricePaidChange = event => {this.setState({ pricePaid: event.target.value })}
 
     handleSubmit = event => {
         event.preventDefault();
 
+        const { name, author, publisher, yearPublication, area, purchaseDate, pricePaid } = this.state;
 
-        const book = this.state;
-
-        axios.post('http://localhost:3333/api/new/book', book)
+        axios.post('http://localhost:3333/api/new/book', { name: this.state.name, author: this.state.author, publisher: this.state.publisher, yearPublication: this.state.yearPublication, area: this.state.area, purchaseDate: this.state.purchaseDate, pricePaid: this.state.pricePaid })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -55,6 +57,7 @@ export default class PersonList extends React.Component {
 
 
     render() {
+        //const { name, author, publisher, yearPublication, area, purchaseDate, pricePaid } = this.state;
 
         return <Fragment>
             <Header />
@@ -65,16 +68,17 @@ export default class PersonList extends React.Component {
                 <code>
                     <h2>
                         Cadastro de Livros
-                </h2>
+                    </h2>
                 </code>
                 <form onSubmit={this.handleSubmit}>
 
                     <TextField
-                        id="nomeLivro"
+                        name = "this.state.name"
+                        id="name"
                         label="Nome do Livro"
                         //className={classes.textField}
-                        // value={values.name}
-                        // onChange={handleChange('name')}
+                        //value = { name }
+                        onChange = {this.handleNameChange}
                         margin="normal"
                         variant="standard"
                         style={{ width: 550 }}
@@ -82,11 +86,12 @@ export default class PersonList extends React.Component {
                     />
                     <br />
                     <TextField
-                        id="nomeAutor"
+                        name = "this.state.author"
+                        id="author"
                         label="Nome do Autor"
                         //className={classes.textField}
-                        // value={values.name}
-                        // onChange={handleChange('name')}
+                        //value={ author }
+                        onChange={this.handleAuthorChange}
                         margin="normal"
                         variant="standard"
                         style={{ width: 550 }}
@@ -94,11 +99,12 @@ export default class PersonList extends React.Component {
                     />
                     <br />
                     <TextField
-                        id="nomeEditora"
+                        name = "this.state.publisher"
+                        id="publisher"
                         label="Nome da Editora"
                         //className={classes.textField}
-                        // value={values.name}
-                        // onChange={handleChange('name')}
+                        //value = {publisher}
+                        onChange={this.handlePublisherChange}
                         margin="normal"
                         variant="standard"
                         style={{ width: 550 }}
@@ -107,47 +113,48 @@ export default class PersonList extends React.Component {
 
                     <br />
                     <TextField
+                        name = "this.state.area"
                         id="area"
                         label="Área"
                         //className={classes.textField}
-                        // value={values.name}
-                        // onChange={handleChange('name')}
+                        //value={area}
+                        onChange={this.handleAreaChange}
                         margin="normal"
                         variant="standard"
                         style={{ width: 550 }}
                     />
 
                     <br />
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                    <KeyboardDatePicker
-                    views={["year"]}
-                    margin="normal"
-                    id="anoPub"
-                    label="Ano de Publicação"
-                    format="yyyy"
-                  //  value={selectedDate}
-                    //onChange={handleDateChange}
-                    KeyboardButtonProps={{
-                        "aria-label": "change date"
-                    }}
-                    style={{ width: 275 }}
 
-                />
-                <KeyboardDatePicker
-                    margin="normal"
-                    id="dataCompra"
-                    label="Data de Compra"
-                    format="dd/mm/yyyy"
-                   // value={selectedDate2}
-                   // onChange={handleDateChange2}
-                    KeyboardButtonProps={{
-                        "aria-label": "change date"
-                    }}
-                    style={{ width: 275 }}
+                    
 
-                />
+                    <br />
+                     <TextField
+                        name = "this.state.yearPublication"
+                        id="yearPublication"
+                        label="Ano de Publicação"
+                        //className={classes.textField}
+                        //value = {yearPublication}
+                        onChange={this.handleYearPublicationChange}
+                        margin="normal"
+                        variant="standard"
+                        style={{ width: 550 }}
 
-                    </MuiPickersUtilsProvider>
+                    />
+
+                    <br />
+                    <TextField
+                        name = "this.state.purchaseDate"
+                        id="purchaseDate"
+                        label="Data de Compra"
+                        //className={classes.textField}
+                        //value = {purchaseDate}
+                        onChange={this.handlePurchaseDateChange}
+                        margin="normal"
+                        variant="standard"
+                        style={{ width: 550 }}
+
+                    />    
 
                     <br />
                     <InputLabel
@@ -156,17 +163,18 @@ export default class PersonList extends React.Component {
                     >
                         Preço do Livro</InputLabel>
                     <Input
-                        id="preco"
+                        name = "this.state.pricePaid"
+                        id="pricePaid"
                         type="number"
-                        //  value={values.amount}
-                        // onChange={handleChange('amount')}
+                        //value={pricePaid}
+                        onChange={this.handlePricePaidChange}
                         startAdornment={<InputAdornment position="start">$</InputAdornment>}
                         style={{ marginRight: 310, width: 240 }}
 
                     />
 
-                <BotaoSucesso handleSubmit={this.handleSubmit}/>
-
+                <BotaoSucesso href = "/"/>
+                
                     <Button href="/" color="primary">
                         Cancelar
                   </Button>

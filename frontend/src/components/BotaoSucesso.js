@@ -103,7 +103,7 @@ export default function CustomizedSnackbars(props) {
   return (
     <div align='center'>
       <br />
-      <Button variant="contained" color='primary' className={classes.margin} onClick={props.handleSubmit}>
+      <Button variant="contained" color='primary' type = "submit" href = "/" className={classes.margin} onClick={props.handleSubmit}>
 salvar      </Button>
       <Snackbar
         anchorOrigin={{
