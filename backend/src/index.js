@@ -10,7 +10,8 @@ const server = require("http").Server(app);
 mongoose.connect(
   "mongodb+srv://admin:admin135@sisbiblioteca-8oeen.mongodb.net/test?retryWrites=true&w=majority",
   {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
   }
 );
 
