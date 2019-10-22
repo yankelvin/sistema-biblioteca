@@ -5,7 +5,7 @@ const uploadConfig = require("./config/upload");
 
 // Controllers
 const BookController = require("./controllers/BookController");
-const EmployeeController = require("./controllers/EmployeeController")
+const EmployeeController = require("./controllers/EmployeeController");
 
 const routes = new express.Router();
 const upload = multer(uploadConfig);

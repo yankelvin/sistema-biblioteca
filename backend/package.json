@@ -6,9 +6,12 @@
   "author": "rendmp <pedro.barbosa.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "cucumber": "./node_modules/.bin/cucumber-js ./bdd/features/ -r ./bdd/steps/"
   },
   "devDependencies": {
+    "axios": "^0.19.0",
+    "cucumber": "^6.0.2",
     "nodemon": "^1.19.1"
   },
   "dependencies": {
