@@ -103,8 +103,8 @@ export default function CustomizedSnackbars(props) {
   return (
     <div align='center'>
       <br />
-      <Button variant="contained" color='primary' type = "submit" href = "/" className={classes.margin} onClick={props.handleSubmit}>
-salvar      </Button>
+      <Button variant="contained" color='primary' type="submit"className={classes.margin} onClick={props.handleSubmit}>
+        salvar      </Button>
       <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
@@ -120,8 +120,8 @@ salvar      </Button>
           message="Salvo com sucesso"
         />
       </Snackbar>
-      
-    
+
+
     </div>
   );
 }

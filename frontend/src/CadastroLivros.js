@@ -53,6 +53,8 @@ export default class PersonList extends React.Component {
                 console.log(res);
                 console.log(res.data);
             })
+            this.props.history.push('/');
+
     }
 
 
@@ -173,8 +175,9 @@ export default class PersonList extends React.Component {
 
                     />
 
-                <BotaoSucesso href = "/"/>
+                <BotaoSucesso />
                 
+                    
                     <Button href="/" color="primary">
                         Cancelar
                   </Button>

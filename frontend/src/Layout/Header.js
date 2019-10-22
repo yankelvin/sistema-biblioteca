@@ -8,7 +8,6 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import logo from './img/logo.svg';
 import LeftMenu from './LeftMenu.js';
-import axios from 'axios';
 
 
 const useStyles = makeStyles(theme => ({
@@ -85,7 +84,7 @@ export default function SearchAppBar() {
             noWrap
             align="center">
             <img src={logo} alt="logo" height = "50px" width = "50px" align="center"/>
-           <code>Toth Biblioteca</code> 
+          Toth Biblioteca
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

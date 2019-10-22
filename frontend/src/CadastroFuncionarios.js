@@ -7,6 +7,7 @@ import "date-fns";
 import axios from 'axios';
 import BotaoSucesso from './components/BotaoSucesso';
 
+
 //import Grid from '@material-ui/core/Grid';
 
 
@@ -29,12 +30,17 @@ export default class PersonList extends React.Component {
 
       const { name, oabNumber } = this.state;
   
-      axios.post('http://localhost:3333/api/new/employee', { name: this.state.name, oabNumber: this.state.oabNumber })
+      axios.post('http://localhost:3333/api/new/employee', {
+           name: this.state.name,
+           oabNumber: this.state.oabNumber })
         .then(res => 
             {
           console.log(res);
           console.log(res.data);
         })
+        this.props.history.push('/');
+
+
     }
 
    
