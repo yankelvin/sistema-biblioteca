@@ -2,7 +2,15 @@ const Book = require("../models/Book");
 
 module.exports = {
   async store(req, res) {
-    const { name, author, publisher, yearPublication, area, purchaseDate, pricePaid } = req.body;
+    const {
+      name,
+      author,
+      publisher,
+      yearPublication,
+      area,
+      purchaseDate,
+      pricePaid
+    } = req.body;
     const book = await Book.create({
       name,
       author,
@@ -20,8 +28,7 @@ module.exports = {
   },
   async update(req, res) {
     const query = { _id: req.body._id };
-    const { name, author, publisher, yearPublication, area, purchaseDate, pricePaid } = req.body;
-    const book = await Book.updateOne(query, {
+    const {
       name,
       author,
       publisher,
@@ -29,13 +36,30 @@ module.exports = {
       area,
       purchaseDate,
       pricePaid
-    }, { omitUndefined: true });
+    } = req.body;
+    const book = await Book.updateOne(
+      query,
+      {
+        name,
+        author,
+        publisher,
+        yearPublication,
+        area,
+        purchaseDate,
+        pricePaid
+      },
+      { omitUndefined: true }
+    );
     return res.json({ book });
-  }
-  ,
+  },
   async delete(req, res) {
     const query = { _id: req.body._id };
     const book = await Book.deleteOne(query);
+    return res.json({ book });
+  },
+  async findBook(req, res) {
+    const query = { name: req.body.name };
+    const book = await Book.find(query);
     return res.json({ book });
   }
 };
