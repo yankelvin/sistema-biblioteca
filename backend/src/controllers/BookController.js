@@ -61,5 +61,10 @@ module.exports = {
     const query = { name: req.body.name };
     const book = await Book.find(query);
     return res.json({ book });
+  },
+  async findAuthor(req, res) {
+    const query = { author: req.body.author };
+    const books = await Book.find(query);
+    return res.json({ books });
   }
 };
