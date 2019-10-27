@@ -59,22 +59,11 @@ module.exports = {
     return res.json({ 200: books });
   },
   async update(req, res) {
-    const query = { _id: req.body._id };
-    const { name, author, publisher, yearPublication, area, purchaseDate, pricePaid } = req.body;
-    const book = await Book.updateOne(
-      query,
-      {
-        name,
-        author,
-        publisher,
-        yearPublication,
-        area,
-        purchaseDate,
-        pricePaid
-      },
-      { omitUndefined: true }
-    );
-    return res.json({ book });
+    const book = await Book.findByIdAndUpdate(req.body._id, req.body);
+    if (!book) {
+      return res.json({ 404: `${req.body._id} not found` });
+    }
+    return res.json({ 200: book });
   },
   async delete(req, res) {
     if (req.body._id) {
