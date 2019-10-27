@@ -30,8 +30,24 @@ module.exports = {
     return res.json({ employee });
   },
   async index(req, res) {
-    const employees = await Employee.find().sort("-createdAt");
-    return res.json(employees);
+    if (req.body) {
+      try {
+        const employees = await Employee.find(req.body);
+        if (employees.length) {
+          return res.json(employees);
+        } else {
+          return res
+            .status(404)
+            .json({ "Requisição inválida": `${JSON.stringify(req.body)} not found` });
+        }
+      } catch (err) {
+        console.error(err.message);
+      } finally {
+        //return res.json({ 400: `Requisição invalida ${req.body}` });
+      }
+    }
+    const books = await Book.find().sort("-createdAt");
+    return res.json({ 200: books });
   },
   async update(req, res) {
     const query = { _id: req.body._id };
