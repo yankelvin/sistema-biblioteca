@@ -80,15 +80,5 @@ module.exports = {
     const query = { _id: req.body._id };
     const book = await Book.deleteOne(query);
     return res.json({ book });
-  },
-  async findBook(req, res) {
-    const query = { name: req.body.name };
-    const book = await Book.find(query);
-    return res.json({ book });
-  },
-  async findAuthor(req, res) {
-    const query = { author: req.body.author };
-    const books = await Book.find(query);
-    return res.json({ books });
   }
 };
