@@ -12,8 +12,8 @@ module.exports = {
         publisher: { type: "string", maxLength: 50, minLength: 5 },
         yearPublication: { type: "number" },
         area: { type: "string", maxLength: 20, minLength: 5 },
-        purchaseDate: { type: "number" },
-        pricePaid: { type: "number" }
+        purchaseDate: { type: "number", min: 0 },
+        pricePaid: { type: "number", min: 0 }
       }
     };
 
@@ -27,10 +27,10 @@ module.exports = {
       });
     }
 
-    const bookExists = await Book.findOne({ where: { name: req.body.name } });
-
+    const bookExists = await Book.findOne({ name: req.body.name });
+    console.log(req.body.name);
     if (bookExists) {
-      return res.status(400).json({ 400: `${req.body.name} already exists` });
+      return res.status(400).json({ error: `${req.body.name} already exists` });
     }
 
     const book = await Book.create(req.body);
