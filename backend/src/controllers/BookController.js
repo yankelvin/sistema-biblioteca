@@ -77,8 +77,9 @@ module.exports = {
     return res.json({ book });
   },
   async delete(req, res) {
-    const query = { _id: req.body._id };
-    const book = await Book.deleteOne(query);
-    return res.json({ book });
+    if (req.body._id) {
+      return res.json({ 200: await Book.findByIdAndDelete(req.body._id) });
+    }
+    return res.json({ 400: "id is missing" });
   }
 };
