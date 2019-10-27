@@ -1,13 +1,22 @@
-import { Switch, Route } from 'react-router-dom';
-import React from 'react';
-import Home from './pages/Home/Home';
+import React from "react";
+import ReactDOM from "react-dom";
 
-function Routes() {
-    return (
-        <Switch>
-            <Route path="/" exact component={Home} />
-        </Switch>
-    );
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+// Pages
+import CadastroFuncionarios from "./pages/Funcionarios/CadastroFuncionarios";
+import CadastroLivros from "./pages/Livros/CadastroLivros";
+import Home from "./pages/Home";
+//
+
+export default function Routes() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact={true} component={Home} />
+        <Route path="/new/employee" exact={true} component={CadastroFuncionarios} />
+        <Route path="/new/book" exact={true} component={CadastroLivros} />
+      </Switch>
+    </BrowserRouter>
+  );
 }
-
-export default Routes;
