@@ -28,7 +28,6 @@ module.exports = {
     }
 
     const bookExists = await Book.findOne({ name: req.body.name });
-    console.log(req.body.name);
     if (bookExists) {
       return res.status(400).json({ error: `${req.body.name} already exists` });
     }
@@ -38,8 +37,26 @@ module.exports = {
     return res.json({ book });
   },
   async index(req, res) {
+    if (req.body) {
+      const books = await Book.find(req.body);
+
+      try {
+        const books = await Book.find(req.body);
+        if (books.length) {
+          return res.json(books);
+        } else {
+          return res
+            .status(404)
+            .json({ "Requisição inválida": `${JSON.stringify(req.body)} not found` });
+        }
+      } catch (err) {
+        console.error(err.message);
+      } finally {
+        //return res.json({ 400: `Requisição invalida ${req.body}` });
+      }
+    }
     const books = await Book.find().sort("-createdAt");
-    return res.json(books);
+    return res.json({ 200: books });
   },
   async update(req, res) {
     const query = { _id: req.body._id };
