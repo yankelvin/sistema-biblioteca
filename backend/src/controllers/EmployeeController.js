@@ -1,4 +1,6 @@
 const Employee = require("../models/Employee");
+var mongoose = require("mongoose");
+var ObjectId = mongoose.Types.ObjectId;
 const Ajv = require("ajv");
 
 module.exports = {
@@ -50,21 +52,20 @@ module.exports = {
     return res.json({ 200: books });
   },
   async update(req, res) {
-    const query = { _id: req.body._id };
-    const { name, oabNumber } = req.body;
-    const employee = await Employee.updateOne(
-      query,
-      {
-        name,
-        oabNumber
-      },
-      { omitUndefined: true }
-    );
-    return res.json({ employee });
+    const employee = await Employee.findByIdAndUpdate(req.body._id, req.body);
+    if (!employee) {
+      return res.json({ 404: `${req.body._id} not found` });
+    }
+    return res.json({ 200: employee });
   },
   async delete(req, res) {
-    const query = { _id: req.body._id };
-    const employee = await Employee.deleteOne(query);
-    return res.json({ employee });
+    if (req.body._id) {
+      const employee = await Employee.findByIdAndDelete(Object(req.body._id), err => {
+        if (err) {
+          return res.json({ 500: err });
+        }
+      });
+      return res.json({ 200: `${employee}` });
+    }
   }
 };
