@@ -28,13 +28,12 @@ export default class CreateBook extends React.Component {
     };
   }
 
-  handleImage = event => {
+  handleImageChange = event => {
     this.setState({ image: event.target.files[0] });
   };
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-    console.log(event.target.name, event.target.value);
   };
 
   handleSubmit = async e => {
@@ -66,7 +65,7 @@ export default class CreateBook extends React.Component {
             <h2>Cadastre um Livro</h2>
           </code>
           <form onSubmit={this.handleSubmit}>
-            <input type="file" onChange={this.handleImage} />
+            <input type="file" name="image" onChange={this.handleImageChange} />
             <br />
 
             <TextField
