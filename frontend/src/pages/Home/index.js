@@ -70,7 +70,11 @@ export default class Home extends Component {
                 {this.state.feed.map(book => (
                   <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
-                      <img class="card-img-top" alt="Card image cap" />
+                      <img
+                        src={`http://localhost:3333/api/files/${book.image}`}
+                        class="card-img-top"
+                        alt={`${book.image}`}
+                      />
                       <div class="card-body">
                         <strong class="d-inline-block mb-2 text-success">{this.props.area}</strong>
 

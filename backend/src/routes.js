@@ -17,7 +17,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // Book Methods
 routes.get("/api/books", jsonParser, BookController.index);
-routes.post("/api/new/book", jsonParser, BookController.store);
+routes.post("/api/new/book", upload.single('image'), BookController.store);
 routes.put("/api/update/book", jsonParser, BookController.update);
 routes.delete("/api/delete/book", jsonParser, BookController.delete);
 
