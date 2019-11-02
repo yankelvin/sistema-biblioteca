@@ -75,25 +75,12 @@ export default function SearchAppBar() {
             color="inherit"
             aria-label="open drawer"
           >
-            <LeftMenu />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap align="center">
             <img src={logo} alt="logo" height="50px" width="50px" align="center" />
             Toth Biblioteca
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Procurar Livro"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
+
         </Toolbar>
       </AppBar>
     </div>
