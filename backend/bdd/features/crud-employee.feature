@@ -7,7 +7,7 @@ Feature: Crud Employees
     Scenario: Store a employee
         Given I want to store a employee
         When I get the endpoint "http://localhost:3333/api/new/employee"
-        Then I pass the name = "name" and the oabNumber = "oabNumber"
+        Then I pass the name = "Hermanotheu", email = "hermanotheu@pentescopeia.com", oabNumber = 742541 and password = "micalateia"
 
     Scenario: Update a employee
         Given I want to update a employee name

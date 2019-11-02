@@ -7,7 +7,7 @@ Feature: Crud Books
     Scenario: Store a book
         Given I want to store a book
         When I get the endpoint "http://localhost:3333/api/new/book"
-        Then I pass the "name", "author", "publisher", "yearPublication", "area", "purchaseDate", "pricePaid"
+        Then I pass the "ipioca", "author", "publisher", "yearPublication", "area", "purchaseDate", "pricePaid"
 
     Scenario: Update a book
         Given I want to update a book name

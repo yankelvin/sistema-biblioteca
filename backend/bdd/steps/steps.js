@@ -29,35 +29,29 @@ defineSupportCode(function({ Given, Then, When }) {
     endpoint = route;
   });
 
-  Then(
-    "I pass the {string}, {string}, {string}, {string}, {string}, {string}, {string}",
-    function(
-      name,
-      author,
-      publisher,
-      yearPublication,
-      area,
-      purchaseDate,
-      pricePaid
-    ) {
-      axios
-        .post(endpoint, {
-          name,
-          author,
-          publisher,
-          yearPublication,
-          area,
-          purchaseDate,
-          pricePaid
-        })
-        .then(x => assert(x.status, 200));
-    }
-  );
-
-  Then("I pass the _id = {string} and the name = {string}", function(
-    _id,
-    name
+  Then("I pass the {string}, {string}, {string}, {string}, {string}, {string}, {string}", function(
+    name,
+    author,
+    publisher,
+    yearPublication,
+    area,
+    purchaseDate,
+    pricePaid
   ) {
+    axios
+      .post(endpoint, {
+        name,
+        author,
+        publisher,
+        yearPublication,
+        area,
+        purchaseDate,
+        pricePaid
+      })
+      .then(x => assert(x.status, 200));
+  });
+
+  Then("I pass the _id = {string} and the name = {string}", function(_id, name) {
     axios.put(endpoint, { _id, name }).then(x => assert(x.status, 200));
   });
 
@@ -69,15 +63,17 @@ defineSupportCode(function({ Given, Then, When }) {
     getStatus(endpoint).then(x => assert.equal(x.status, answer));
   });
 
-  Then("I pass the name = {string} and the oabNumber = {string}", function(
-    name,
-    oabNumber
-  ) {
-    axios
-      .post(endpoint, {
-        name,
-        oabNumber
-      })
-      .then(x => assert(x.status, 200));
-  });
+  Then(
+    "I pass the name = {string}, email = {string}, oabNumber = {int} and password = {string}",
+    function(name, email, password, oabNumber) {
+      axios
+        .post(endpoint, {
+          name,
+          email,
+          password,
+          oabNumber
+        })
+        .then(x => assert(x.status, 200));
+    }
+  );
 });
