@@ -10,6 +10,8 @@ module.exports = {
     var employeeSchema = {
       properties: {
         name: { type: "string", maxLength: 50, minLength: 5 },
+        email: { type: "string", maxLength: 50, minLength: 5 },
+        password: { type: "string", maxLength: 50, minLength: 5 },
         oabNumber: { type: "number", min: 1 }
       }
     };
