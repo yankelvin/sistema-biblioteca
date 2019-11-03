@@ -65,7 +65,7 @@ defineSupportCode(function({ Given, Then, When }) {
 
   Then(
     "I pass the name = {string}, email = {string}, oabNumber = {int} and password = {string}",
-    function(name, email, password, oabNumber) {
+    function(name, email, oabNumber, password) {
       axios
         .post(endpoint, {
           name,
