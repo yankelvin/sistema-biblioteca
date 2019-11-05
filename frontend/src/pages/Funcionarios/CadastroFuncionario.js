@@ -1,18 +1,13 @@
 import React, { Fragment } from "react";
-import Header from "../../layout/Header";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import SaveIcon from "@material-ui/icons/Save";
-import "date-fns";
-import axios from "axios";
 import BotaoSucesso from "../../components/BotaoSucesso";
 
-//import Grid from '@material-ui/core/Grid';
+import api from "../../services/api";
 
-export default class PersonList extends React.Component {
+export default class CadastroFuncionario extends React.Component {
   constructor() {
     super();
-    //this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       name: "",
       oabNumber: ""
@@ -20,27 +15,21 @@ export default class PersonList extends React.Component {
     };
   }
 
-  handleNameChange = event => {
-    this.setState({ name: event.target.value });
-  };
-  handleOabNumberChange = event => {
-    this.setState({ oabNumber: event.target.value });
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+    console.log(event.target.name, event.target.value);
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
+    const { name, oabNumber } = this.state;
     event.preventDefault();
 
-    const { name, oabNumber } = this.state;
+    const data = {
+      name: name,
+      oabNumber: oabNumber
+    };
 
-    axios
-      .post("http://localhost:3333/api/new/employee", {
-        name: this.state.name,
-        oabNumber: this.state.oabNumber
-      })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      });
+    const response = await api.post("new/employee", data);
     this.props.history.push("/");
   };
 
@@ -57,9 +46,8 @@ export default class PersonList extends React.Component {
             <TextField
               id="name"
               label="Nome do Funcionário*"
-              name="this.state.name"
-              // value={values.name}
-              onChange={this.handleNameChange}
+              name="name"
+              onChange={this.handleChange}
               margin="normal"
               variant="standard"
               style={{ width: 550 }}
@@ -68,9 +56,8 @@ export default class PersonList extends React.Component {
             <TextField
               id="oabNumber"
               label="Número OAB"
-              name="this.state.oabNumber"
-              // value={values.name}
-              onChange={this.handleOabNumberChange}
+              name="oabNumber"
+              onChange={this.handleChange}
               margin="normal"
               variant="standard"
               style={{ width: 550 }}
