@@ -9,23 +9,7 @@ module.exports = {
 
     console.log(req.body);
 
-    var employeeSchema = {
-      properties: {
-        name: { type: "string", maxLength: 50, minLength: 5 },
-        //email: { type: "string", maxLength: 50, minLength: 5 },
-        //password: { type: "string", maxLength: 50, minLength: 5 },
-        oabNumber: { type: "string", minLength: 1 }
-      }
-    };
-
-    var validate = ajv.compile(employeeSchema);
-
-    if (!validate(req.body)) {
-      return res.json({
-        400: `${validate.errors}`
-      });
-    }
-    const employeeAlreadyExists = await Employee.findOne({ oabNumber: req.body.oabNumber });
+    const employeeAlreadyExists = await Employee.findOne({ email: req.body.email });
 
     if (employeeAlreadyExists) {
       return res.status(400).json({ error: `${req.body.oabNumber} already exist` });
