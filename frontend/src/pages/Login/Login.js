@@ -103,7 +103,7 @@ export default class Login extends Component {
     };
 
     return (
-      <div className="container" style={containerStyle}>
+      <div className="container" style={containerStyle} onMouseOver={this.onlyAdm}>
         <img src={logo} style={img} alt="Bibilioteca Toth " />
         <div className="content" style={contentStyle}>
           <form style={formStyle} action="/home">

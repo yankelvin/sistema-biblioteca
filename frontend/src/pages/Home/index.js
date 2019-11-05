@@ -1,8 +1,6 @@
 // React
 import React, { Component } from "react";
-
-// Material Ui
-import Button from "@material-ui/core/Button";
+import Carousel from "react-bootstrap/Carousel";
 
 // Router
 import { Link } from "react-router-dom";
@@ -11,6 +9,11 @@ import { Link } from "react-router-dom";
 import api from "../../services/api";
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.onlyAdm = this.onlyAdm.bind(this);
+  }
+
   state = {
     feed: []
   };
@@ -20,50 +23,49 @@ export default class Home extends Component {
     this.setState({ feed: response.data });
   }
 
+  onlyAdm = function() {
+    let id = localStorage.id;
+    if (id != "5dc1cf33e4caa528dcc63d6b") {
+      document.getElementById("btnNewBook").classList.add("d-none");
+      document.getElementById("btnNewEmp").classList.add("d-none");
+    } else {
+      document.getElementById("btnNewBook").classList.remove("d-none");
+      document.getElementById("btnNewEmp").classList.remove("d-none");
+    }
+  };
+
   render() {
     return (
-      <>
-        <link
-          rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous"
-        ></link>
-        <script
-          src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-          crossorigin="anonymous"
-        ></script>
-        <script
-          src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-          integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-          crossorigin="anonymous"
-        ></script>
-        <script
-          src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-          crossorigin="anonymous"
-        ></script>
-        <br />
-        <br />
-        <div align="center">
+      <div className="container" onMouseOver={this.onlyAdm}>
+        <Carousel>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              style={{ height: "450px" }}
+              src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1453&q=80"
+              alt="First slide"
+            />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              style={{ height: "450px" }}
+              src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1491&q=80"
+              alt="Second slide"
+            />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              style={{ height: "450px" }}
+              src="https://abrilexame.files.wordpress.com/2017/10/maskarad.jpg"
+              alt="Third slide"
+            />
+          </Carousel.Item>
+        </Carousel>
+
+        <main role="main" className="mt-5 text-center">
           <h3>Lista de Livros Disponíveis</h3>
-
-          <Link to={"/new/employee"}>
-            <Button href="/new/employee" variant="contained" color="primary" size="small">
-              Cadastro de Funcionários
-            </Button>
-          </Link>
-
-          <Link to={"/new/book"}>
-            <Button variant="contained" color="primary" size="small">
-              {" "}
-              Cadastro de Livros
-            </Button>
-          </Link>
-        </div>
-
-        <main role="main">
           <div class="album py-5 bg-light">
             <div class="container">
               <div class="row">
@@ -108,7 +110,7 @@ export default class Home extends Component {
             </div>
           </div>
         </main>
-      </>
+      </div>
     );
   }
 }

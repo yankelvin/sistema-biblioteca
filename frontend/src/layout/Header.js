@@ -3,11 +3,14 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import SearchIcon from "@material-ui/icons/Search";
 import logo from "../assets/logo.svg";
-import LeftMenu from "./LeftMenu.js";
+
+// Material Ui
+import Button from "@material-ui/core/Button";
+
+// Router
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -79,6 +82,26 @@ export default function SearchAppBar() {
             <img src={logo} alt="logo" height="50px" width="50px" align="center" />
             Toth Biblioteca
           </Typography>
+
+          <Link to={"/new/employee"}>
+            <Button
+              id="btnNewEmp"
+              className="mr-3"
+              href="/new/employee"
+              variant="contained"
+              color="#7e57c2"
+              size="small"
+            >
+              Cadastro de Funcionários
+            </Button>
+          </Link>
+
+          <Link to={"/new/book"}>
+            <Button id="btnNewBook" variant="contained" color="#7e57c2" size="small">
+              {" "}
+              Cadastro de Livros
+            </Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
