@@ -7,12 +7,14 @@ module.exports = {
   async store(req, res) {
     const ajv = new Ajv({ allErrors: true });
 
+    console.log(req.body);
+
     var employeeSchema = {
       properties: {
         name: { type: "string", maxLength: 50, minLength: 5 },
-        email: { type: "string", maxLength: 50, minLength: 5 },
-        password: { type: "string", maxLength: 50, minLength: 5 },
-        oabNumber: { type: "number", min: 1 }
+        //email: { type: "string", maxLength: 50, minLength: 5 },
+        //password: { type: "string", maxLength: 50, minLength: 5 },
+        oabNumber: { type: "string", minLength: 1 }
       }
     };
 
