@@ -67,20 +67,18 @@ export default function SearchAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
-          >
-          </IconButton>
+          ></IconButton>
           <Typography className={classes.title} variant="h6" noWrap align="center">
             <img src={logo} alt="logo" height="50px" width="50px" align="center" />
             Toth Biblioteca
           </Typography>
-
         </Toolbar>
       </AppBar>
     </div>
