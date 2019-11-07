@@ -17,7 +17,7 @@ export default class CreateBook extends React.Component {
   constructor() {
     super();
     this.state = {
-      image: null,
+      image: "",
       name: "",
       author: "",
       publisher: "",
@@ -39,20 +39,19 @@ export default class CreateBook extends React.Component {
   handleSubmit = async e => {
     e.preventDefault();
 
-    const data = new FormData();
-
-    data.append("image", this.state.image);
-    data.append("name", this.state.name);
-    data.append("author", this.state.author);
-    data.append("publisher", this.state.publisher);
-    data.append("yearPublication", this.state.yearPublication);
-    data.append("area", this.state.area);
-    data.append("purchaseDate", this.state.purchaseDate);
-    data.append("pricePaid", this.state.pricePaid);
+    const data = {
+      image: this.state.image,
+      name: this.state.name,
+      author: this.state.author,
+      publisher: this.state.publisher,
+      yearPublication: this.state.yearPublication,
+      area: this.state.area,
+      purchaseDate: this.state.purchaseDate,
+      pricePaid: this.state.pricePaid
+    };
 
     const response = await api.post("new/book", data);
-
-    this.props.history.push("/");
+    console.log(response.data);
   };
 
   render() {
@@ -66,8 +65,8 @@ export default class CreateBook extends React.Component {
           </code>
           <form onSubmit={this.handleSubmit}>
             <input type="file" name="image" onChange={this.handleImageChange} />
-            <br />
 
+            <br />
             <TextField
               name="name"
               id="name"
@@ -77,6 +76,7 @@ export default class CreateBook extends React.Component {
               variant="standard"
               style={{ width: 550 }}
             />
+
             <br />
             <TextField
               name="author"
@@ -87,6 +87,7 @@ export default class CreateBook extends React.Component {
               variant="standard"
               style={{ width: 550 }}
             />
+
             <br />
             <TextField
               name="publisher"
@@ -108,8 +109,6 @@ export default class CreateBook extends React.Component {
               variant="standard"
               style={{ width: 550 }}
             />
-
-            <br />
 
             <br />
             <TextField
@@ -134,8 +133,7 @@ export default class CreateBook extends React.Component {
             />
 
             <br />
-
-            <InputLabel htmlFor="preco" style={{ marginRight: 450 }}>
+            <InputLabel htmlFor="preco" style={{ marginRight: 450 }} onChange={this.handleChange}>
               Preço do Livro
             </InputLabel>
 
