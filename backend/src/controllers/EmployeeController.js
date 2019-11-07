@@ -5,15 +5,7 @@ const Ajv = require("ajv");
 
 module.exports = {
   async store(req, res) {
-    const ajv = new Ajv({ allErrors: true });
-
     console.log(req.body);
-
-    const employeeAlreadyExists = await Employee.findOne({ email: req.body.email });
-
-    if (employeeAlreadyExists) {
-      return res.status(400).json({ error: `${req.body.oabNumber} already exist` });
-    }
 
     const employee = await Employee.create(req.body);
 

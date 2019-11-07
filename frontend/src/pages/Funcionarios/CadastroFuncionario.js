@@ -9,28 +9,28 @@ export default class CadastroFuncionario extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      oabNumber: ""
-      //password: '',
+      name: null,
+      oabNumber: null,
+      password: null
     };
   }
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-    console.log(event.target.name, event.target.value);
   };
 
   handleSubmit = async event => {
-    const { name, oabNumber } = this.state;
+    const { name, oabNumber, password } = this.state;
     event.preventDefault();
 
     const data = {
-      name: name,
-      oabNumber: oabNumber
+      name,
+      oabNumber,
+      password
     };
 
     const response = await api.post("new/employee", data);
-    this.props.history.push("/");
+    console.log(response.data);
   };
 
   render() {
@@ -55,8 +55,19 @@ export default class CadastroFuncionario extends React.Component {
             <br />
             <TextField
               id="oabNumber"
-              label="Número OAB"
+              label="Número OAB (se tiver)"
               name="oabNumber"
+              onChange={this.handleChange}
+              margin="normal"
+              variant="standard"
+              style={{ width: 550 }}
+            />
+            <br />
+            <TextField
+              type="password"
+              id="password"
+              label="Senha*"
+              name="password"
               onChange={this.handleChange}
               margin="normal"
               variant="standard"
