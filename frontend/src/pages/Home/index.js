@@ -25,7 +25,7 @@ export default class Home extends Component {
 
   onlyAdm = function() {
     let id = localStorage.id;
-    if (id != "5dc1cf33e4caa528dcc63d6b") {
+    if (id !== "5dc1cf33e4caa528dcc63d6b") {
       document.getElementById("btnNewBook").classList.add("d-none");
       document.getElementById("btnNewEmp").classList.add("d-none");
     } else {
@@ -66,41 +66,41 @@ export default class Home extends Component {
 
         <main role="main" className="mt-5 text-center">
           <h3>Lista de Livros Disponíveis</h3>
-          <div class="album py-5 bg-light">
-            <div class="container">
-              <div class="row">
+          <div className="album py-5 bg-light">
+            <div className="container">
+              <div className="row">
                 {this.state.feed.map(book => (
-                  <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
+                  <div key={book.name} className="col-md-4">
+                    <div className="card mb-4 shadow-sm">
                       <img
                         src={`http://localhost:3333/api/files/${book.image}`}
-                        class="card-img-top"
+                        className="card-img-top"
                         alt={`${book.image}`}
                       />
-                      <div class="card-body">
-                        <strong class="d-inline-block mb-2 text-success">{this.props.area}</strong>
+                      <div className="card-body">
+                        <strong className="d-inline-block mb-2 text-success">{book.area}</strong>
 
-                        <p class="card-text">
-                          <a class="text-dark" href="#">
+                        <div className="card-text">
+                          <a className="text-dark" href="book-info">
                             {" "}
                             <b> {book.name}</b>
                           </a>
                           <br />
-                          <div class="mb-1 text-muted">
+                          <p className="mb-1 text-muted">
                             por {book.author} | {book.purchaseDate}
-                          </div>
-                        </p>
+                          </p>
+                        </div>
 
-                        <p>R$ {this.props.pricePaid}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="btn-group">
+                        <p>R$ {book.pricePaid}</p>
+                        <div className="d-flex justify-content-between align-items-center">
+                          <div className="btn-group">
                             <Link to={""}>
-                              <button type="button" class="btn btn-sm btn-outline-secondary">
+                              <button type="button" className="btn btn-sm btn-outline-secondary">
                                 Ver
                               </button>
                             </Link>
                           </div>
-                          <small class="text-muted">9 mins</small>
+                          <small className="text-muted">Editora: {book.publisher}</small>
                         </div>
                       </div>
                     </div>

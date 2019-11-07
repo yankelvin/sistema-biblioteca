@@ -1,10 +1,10 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import logo from "../assets/logo.svg";
+import "./Header.css";
 
 // Material Ui
 import Button from "@material-ui/core/Button";
@@ -70,26 +70,14 @@ export default function SearchAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          ></IconButton>
-          <Typography className={classes.title} variant="h6" noWrap align="center">
-            <img src={logo} alt="logo" height="50px" width="50px" align="center" />
-            Toth Biblioteca
-          </Typography>
-
           <Link to={"/new/employee"}>
             <Button
               id="btnNewEmp"
               className="mr-3"
-              href="/new/employee"
               variant="contained"
-              color="#7e57c2"
+              color="default"
               size="small"
             >
               Cadastro de Funcionários
@@ -97,9 +85,33 @@ export default function SearchAppBar() {
           </Link>
 
           <Link to={"/new/book"}>
-            <Button id="btnNewBook" variant="contained" color="#7e57c2" size="small">
-              {" "}
+            <Button id="btnNewBook" variant="contained" color="default" size="small">
               Cadastro de Livros
+            </Button>
+          </Link>
+
+          <Typography className={classes.title} variant="h6" noWrap align="center">
+            <Link id="toth-link" to={"/home"}>
+              <img src={logo} alt="logo" height="50px" width="50px" align="center" />
+              Toth Biblioteca
+            </Link>
+          </Typography>
+
+          <Link to={"/mybooks"}>
+            <Button
+              id="btnAlugueis"
+              className="mr-3"
+              variant="contained"
+              color="default"
+              size="small"
+            >
+              Ver meus livros
+            </Button>
+          </Link>
+
+          <Link to={""}>
+            <Button id="btnLogin" variant="contained" color="default" size="small">
+              Sair - Trocar Usuário
             </Button>
           </Link>
         </Toolbar>

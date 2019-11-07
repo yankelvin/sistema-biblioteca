@@ -7,7 +7,7 @@ export default class Login extends Component {
     super(props);
 
     // States
-    this.state = { email: null, password: null, id: 0 };
+    this.state = { email: "", password: "", id: 0 };
 
     // Functions
     this.signIn = this.signIn.bind(this);
@@ -21,7 +21,7 @@ export default class Login extends Component {
     if (this.state.email != null && this.state.password != null) {
       emp = await api.get("employees", { email: this.state.email.toString() });
       emp.data.forEach(x => {
-        if (x.email == this.state.email && x.password == this.state.password) {
+        if (x.email === this.state.email && x.password === this.state.password) {
           this.setState({ id: x._id });
           localStorage.id = this.state.id;
           document.location += "home";
@@ -29,17 +29,17 @@ export default class Login extends Component {
       });
     }
 
-    if (this.state.id == 0) {
+    if (this.state.id === 0) {
       alert("Senha inválida!");
     }
   };
 
   setEmail = e => {
-    this.state.email = e.target.value;
+    this.setState({ email: e.target.value });
   };
 
   setPassword = e => {
-    this.state.password = e.target.value;
+    this.setState({ password: e.target.value });
   };
 
   render() {
