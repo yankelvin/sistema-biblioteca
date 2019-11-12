@@ -6,6 +6,8 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import logo from "../assets/logo.svg";
 import "./Header.css";
 
+// Images
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 // Material Ui
 import Button from "@material-ui/core/Button";
 
@@ -130,13 +132,11 @@ export default function SearchAppBar() {
 
           <Link to={"/login"}>
             <Button
-              className={localStorage.id === "" ? "" : "d-none"}
-              id="btnLogin"
-              variant="contained"
-              color="default"
-              size="small"
+              style={{
+                color: "white"
+              }}
             >
-              Fazer Login
+              <AccountCircleIcon />
             </Button>
           </Link>
         </Toolbar>
