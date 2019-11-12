@@ -52,6 +52,7 @@ export default class CreateBook extends React.Component {
 
     const response = await api.post("new/book", data);
     console.log(response.data);
+    alert("Livro cadastrado com sucesso!");
   };
 
   render() {
@@ -132,6 +133,7 @@ export default class CreateBook extends React.Component {
               style={{ width: 550 }}
             />
 
+            <br />
             <br />
             <InputLabel htmlFor="preco" style={{ marginRight: 450 }} onChange={this.handleChange}>
               Preço do Livro
