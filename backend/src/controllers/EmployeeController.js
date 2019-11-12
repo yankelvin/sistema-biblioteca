@@ -1,4 +1,5 @@
 const Employee = require("../models/Employee");
+const Book = require("../models/Book");
 var mongoose = require("mongoose");
 var ObjectId = mongoose.Types.ObjectId;
 const Ajv = require("ajv");
@@ -46,6 +47,23 @@ module.exports = {
         }
       });
       return res.json({ 200: `${employee}` });
+    }
+  },
+  async reserveBook(req, res) {
+    if (req.body.book_Id && req.body.emp_Id) {
+      const book = await Book.findOne({ _id: req.body.book_Id });
+      const employee = await Employee.findOne({ _id: req.body.emp_Id });
+
+      let find = false;
+      employee.reservedBooks.forEach(b => (b._id === book._id ? (find = true) : null));
+
+      if (!find) {
+        employee.reservedBooks.push(book);
+        employee.save();
+        return res.json({ 200: `${book.name}` });
+      }
+
+      return res.json({ 404: `${req.body.book_Id} or ${req.body.emp_Id} not found` });
     }
   }
 };

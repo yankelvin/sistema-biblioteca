@@ -23,7 +23,9 @@ routes.delete("/api/delete/book", jsonParser, BookController.delete);
 
 // Employee Methods
 routes.get("/api/employees", jsonParser, EmployeeController.index);
+routes.post("/api/employees", jsonParser, EmployeeController.index);
 routes.post("/api/new/employee", jsonParser, EmployeeController.store);
+routes.post("/api/new/reservedBook", jsonParser, EmployeeController.reserveBook);
 routes.put("/api/update/employee", jsonParser, EmployeeController.update);
 routes.delete("/api/delete/employee", jsonParser, EmployeeController.delete);
 
