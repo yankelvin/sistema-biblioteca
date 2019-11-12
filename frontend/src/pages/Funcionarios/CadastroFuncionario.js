@@ -11,7 +11,8 @@ export default class CadastroFuncionario extends React.Component {
     this.state = {
       name: null,
       oabNumber: null,
-      password: null
+      password: null,
+      email: null
     };
   }
 
@@ -20,17 +21,19 @@ export default class CadastroFuncionario extends React.Component {
   };
 
   handleSubmit = async event => {
-    const { name, oabNumber, password } = this.state;
+    const { name, oabNumber, password, email } = this.state;
     event.preventDefault();
 
     const data = {
       name,
       oabNumber,
-      password
+      password,
+      email
     };
 
     const response = await api.post("new/employee", data);
     console.log(response.data);
+    alert("Funcionário cadastrado com sucesso!");
   };
 
   render() {
@@ -52,6 +55,18 @@ export default class CadastroFuncionario extends React.Component {
               variant="standard"
               style={{ width: 550 }}
             />
+
+            <br />
+            <TextField
+              id="email"
+              label="Email do Funcionário*"
+              name="email"
+              onChange={this.handleChange}
+              margin="normal"
+              variant="standard"
+              style={{ width: 550 }}
+            />
+
             <br />
             <TextField
               id="oabNumber"
@@ -62,6 +77,7 @@ export default class CadastroFuncionario extends React.Component {
               variant="standard"
               style={{ width: 550 }}
             />
+
             <br />
             <TextField
               type="password"
@@ -73,6 +89,7 @@ export default class CadastroFuncionario extends React.Component {
               variant="standard"
               style={{ width: 550 }}
             />
+
             <br></br>
             <BotaoSucesso href="/" />
             <Button href="/" color="primary">
