@@ -13,6 +13,11 @@ export default class Login extends Component {
     this.signIn = this.signIn.bind(this);
     this.setEmail = this.setEmail.bind(this);
     this.setPassword = this.setPassword.bind(this);
+
+    if (localStorage.id !== "") {
+      document.location.reload();
+      localStorage.id = "";
+    }
   }
 
   signIn = async e => {
@@ -24,7 +29,7 @@ export default class Login extends Component {
         if (x.email === this.state.email && x.password === this.state.password) {
           this.setState({ id: x._id });
           localStorage.id = this.state.id;
-          document.location += "home";
+          document.location = "/";
         }
       });
     }
@@ -106,7 +111,7 @@ export default class Login extends Component {
       <div className="container" style={containerStyle} onMouseOver={this.onlyAdm}>
         <img src={logo} style={img} alt="Bibilioteca Toth " />
         <div className="content" style={contentStyle}>
-          <form style={formStyle} action="/home">
+          <form style={formStyle} action="">
             <label style={contentLabelStyle} htmlFor="email">
               {" "}
               E-MAIL

@@ -67,6 +67,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function SearchAppBar() {
   const classes = useStyles();
+  const _id = "5dc1cf33e4caa528dcc63d6b";
 
   return (
     <div className={classes.root}>
@@ -75,7 +76,7 @@ export default function SearchAppBar() {
           <Link to={"/new/employee"}>
             <Button
               id="btnNewEmp"
-              className="mr-3"
+              className={localStorage.id === _id ? "mr-3" : "mr-3 d-none"}
               variant="contained"
               color="default"
               size="small"
@@ -85,13 +86,19 @@ export default function SearchAppBar() {
           </Link>
 
           <Link to={"/new/book"}>
-            <Button id="btnNewBook" variant="contained" color="default" size="small">
+            <Button
+              className={localStorage.id === _id ? "" : "d-none"}
+              id="btnNewBook"
+              variant="contained"
+              color="default"
+              size="small"
+            >
               Cadastro de Livros
             </Button>
           </Link>
 
           <Typography className={classes.title} variant="h6" noWrap align="center">
-            <Link id="toth-link" to={"/home"}>
+            <Link id="toth-link" to={"/"}>
               <img src={logo} alt="logo" height="50px" width="50px" align="center" />
               Toth Biblioteca
             </Link>
@@ -100,7 +107,7 @@ export default function SearchAppBar() {
           <Link to={"/mybooks"}>
             <Button
               id="btnAlugueis"
-              className="mr-3"
+              className={localStorage.id === _id ? "mr-3" : "mr-3 d-none"}
               variant="contained"
               color="default"
               size="small"
@@ -109,9 +116,27 @@ export default function SearchAppBar() {
             </Button>
           </Link>
 
-          <Link to={""}>
-            <Button id="btnLogin" variant="contained" color="default" size="small">
+          <Link to={"/login"}>
+            <Button
+              className={localStorage.id === _id ? "" : "d-none"}
+              id="btnLogin"
+              variant="contained"
+              color="default"
+              size="small"
+            >
               Sair - Trocar Usuário
+            </Button>
+          </Link>
+
+          <Link to={"/login"}>
+            <Button
+              className={localStorage.id === "" ? "" : "d-none"}
+              id="btnLogin"
+              variant="contained"
+              color="default"
+              size="small"
+            >
+              Fazer Login
             </Button>
           </Link>
         </Toolbar>
