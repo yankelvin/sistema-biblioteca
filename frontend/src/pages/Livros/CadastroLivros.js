@@ -34,24 +34,27 @@ export default class CreateBook extends React.Component {
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+    console.log(`${event.target.name}: ${event.target.value}`);
   };
 
   handleSubmit = async e => {
     e.preventDefault();
 
-    const data = {
-      image: this.state.image,
-      name: this.state.name,
-      author: this.state.author,
-      publisher: this.state.publisher,
-      yearPublication: this.state.yearPublication,
-      area: this.state.area,
-      purchaseDate: this.state.purchaseDate,
-      pricePaid: this.state.pricePaid
-    };
+    const data = new FormData();
 
-    const response = await api.post("new/book", data);
-    console.log(response.data);
+    data.append("image", this.state.image);
+    data.append("name", this.state.name);
+    data.append("author", this.state.author);
+    data.append("publisher", this.state.publisher);
+    data.append("yearPublication", this.state.yearPublication);
+    data.append("area", this.state.area);
+    data.append("purchaseDate", this.state.purchauseDate);
+    data.append("pricePaid", this.state.pricePaid);
+
+    console.log(data);
+
+    await api.post("new/book", data);
+
     alert("Livro cadastrado com sucesso!");
   };
 
