@@ -14,13 +14,17 @@ export default class Book extends Component {
 
   reserveBook = async e => {
     e.preventDefault();
-    const response = await api.post("new/reservedBook", {
-      book_Id: this.props.book._id,
-      emp_Id: localStorage.id
-    });
-    console.log(response);
-    if (response.status === 200) {
-      alert(`Livro ${response.data["200"]} reservado!`);
+    if (localStorage.id !== "") {
+      const response = await api.post("new/reservedBook", {
+        book_Id: this.props.book._id,
+        emp_Id: localStorage.id
+      });
+
+      if (response.status === 200) {
+        alert(`Livro ${response.data["200"]} reservado!`);
+      }
+    } else {
+      alert("Necessário fazer login!");
     }
   };
 
@@ -58,7 +62,11 @@ export default class Book extends Component {
 
                 <button
                   type="button"
-                  className="ml-2 btn btn-sm btn-outline-secondary"
+                  className={
+                    this.props.reserved === true
+                      ? "d-none"
+                      : "ml-2 btn btn-sm btn-outline-secondary"
+                  }
                   onClick={this.reserveBook}
                 >
                   Reservar

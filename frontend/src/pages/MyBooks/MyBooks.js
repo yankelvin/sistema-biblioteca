@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import api from "../../services/api";
 
 // Components
-import Book from "../Home/book";
+import Book from "../Home/Book";
 
 export default class MyBooks extends Component {
   constructor(props) {
@@ -29,7 +29,7 @@ export default class MyBooks extends Component {
 
         <div className="row mt-5">
           {this.state.feed.reservedBooks.map(book => (
-            <Book key={book.name} book={book}></Book>
+            <Book reserved={true} key={book._id} book={book}></Book>
           ))}
         </div>
       </div>

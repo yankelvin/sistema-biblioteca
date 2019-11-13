@@ -6,7 +6,7 @@ import Carousel from "react-bootstrap/Carousel";
 import api from "../../services/api";
 
 // Components
-import Book from "./book";
+import Book from "./Book";
 
 export default class Home extends Component {
   constructor(props) {
@@ -55,7 +55,7 @@ export default class Home extends Component {
             <div className="container">
               <div className="row">
                 {this.state.feed.map(book => (
-                  <Book key={book.name} book={book}></Book>
+                  <Book key={book._id} book={book}></Book>
                 ))}
               </div>
             </div>
