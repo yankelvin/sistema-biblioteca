@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import api from "../../services/api";
 
 // Components
-import Book from "../Home/Book";
+import Book from "../Home/book";
 
 export default class MyBooks extends Component {
   constructor(props) {
