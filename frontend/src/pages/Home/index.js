@@ -6,7 +6,8 @@ import Carousel from "react-bootstrap/Carousel";
 import api from "../../services/api";
 
 // Components
-import Book from "./book";
+//import Book from "../Book/index";
+import Book from "../Book/Book";
 
 export default class Home extends Component {
   constructor(props) {
