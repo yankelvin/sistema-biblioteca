@@ -11,6 +11,8 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 // Material Ui
 import Button from "@material-ui/core/Button";
 
+import SearchInput from "../components/SearchInput";
+
 // Router
 import { Link } from "react-router-dom";
 
@@ -129,6 +131,8 @@ export default function SearchAppBar() {
               Sair - Trocar Usuário
             </Button>
           </Link>
+
+          <SearchInput />
 
           <Link to={"/login"}>
             <Button
