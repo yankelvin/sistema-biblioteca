@@ -1,0 +1,8 @@
+.div-buttons {
+  display: flex;
+  margin: auto;
+}
+
+.div-buttons button {
+  margin: 10px;
+}

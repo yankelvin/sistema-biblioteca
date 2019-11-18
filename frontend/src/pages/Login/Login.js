@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import api from "../../services/api";
 import logo from "../../assets/usuario.png";
 
+import "./style.css";
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -103,6 +105,19 @@ export default class Login extends Component {
       cursor: "pointer"
     };
 
+    const buttonRegister = {
+      border: 0,
+      borderRadius: "4px",
+      width: "100%",
+      height: "42px",
+      padding: " 0 20px",
+      fontSize: "16px",
+      fontWeight: " bold",
+      background: "#3f51b5",
+      color: "white",
+      cursor: "pointer"
+    };
+
     const img = {
       maxWidth: "30%"
     };
@@ -140,9 +155,15 @@ export default class Login extends Component {
               onChange={this.setPassword}
             />
 
-            <button style={buttonStyle} onClick={this.signIn} align="right">
-              Entrar
-            </button>
+            <div className="div-buttons">
+              <button id="entry-button" style={buttonStyle} onClick={this.signIn} align="right">
+                Entrar
+              </button>
+
+              <button id="register-button" style={buttonRegister}>
+                Registrar
+              </button>
+            </div>
           </form>
         </div>
       </div>
