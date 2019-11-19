@@ -1,21 +1,24 @@
 import React from "react";
+// Router
+import { Link } from "react-router-dom";
+
+import "./Header.css";
+
+// Images
+import logo from "../assets/logo.svg";
+import carrinho from "../assets/carrinho.svg";
+
+// Material Ui
+import Button from "@material-ui/core/Button";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import logo from "../assets/logo.svg";
-import "./Header.css";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
-// Images
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-// Material Ui
-import Button from "@material-ui/core/Button";
-
+// intern components
 import SearchInput from "../components/SearchInput";
-
-// Router
-import { Link } from "react-router-dom";
-
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -23,8 +26,14 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2)
   },
+  carrinhoLogo: {
+    width: "50px",
+    height: "50px",
+    color: "#fff"
+  },
   title: {
     flexGrow: 1,
+
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block"
@@ -101,10 +110,10 @@ export default function SearchAppBar() {
             </Button>
           </Link>
 
-          <Typography className={classes.title} variant="h6" noWrap align="center">
+          <Typography className={classes.title} variant="h6" noWrap align="left">
             <Link id="toth-link" to={"/"}>
-              <img src={logo} alt="logo" height="50px" width="50px" align="center" />
-              Toth Biblioteca
+              <img src={logo} alt="logo" height="50px" width="50px" align="left" />
+              <label>Toth Biblioteca</label>
             </Link>
           </Typography>
 
@@ -135,13 +144,13 @@ export default function SearchAppBar() {
           <SearchInput />
 
           <Link to={"/login"}>
-            <Button
-              style={{
-                color: "white"
-              }}
-            >
+            <Button style={{ color: "#fff" }}>
               <AccountCircleIcon />
             </Button>
+          </Link>
+
+          <Link to={""}>
+            <ShoppingCartIcon className={"shopp-button"} />
           </Link>
         </Toolbar>
       </AppBar>

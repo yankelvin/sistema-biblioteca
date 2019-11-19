@@ -6,3 +6,12 @@
 #toth-link {
   color: white;
 }
+
+.shopp-button {
+  color: #fff;
+  margin: 10px;
+}
+
+.shopp-button:hover {
+  border-bottom: 5px solid rgba(255, 255, 255, 0);
+}
