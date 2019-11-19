@@ -36,7 +36,7 @@ export default class Book extends Component {
         <div className="card mb-4 shadow-sm">
           <img
             id="cover-img"
-            src={`http://localhost:3333/api/files/${this.props.book.image}`}
+            src={`https://toth-biblioteca-api.herokuapp.com/api/files/${this.props.book.image}`}
             alt={`${this.props.book.image}`}
           />
           <div className="card-body">
