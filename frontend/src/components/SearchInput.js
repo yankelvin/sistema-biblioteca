@@ -42,11 +42,6 @@ export default class components extends Component {
             placeholder="O que você procura?"
           />
         </form>
-        {this.state.statusCode === 200 ? (
-          <Redirect to="/" />
-        ) : (
-          <Redirect to={{ pathname: "/not-found", state: { name: this.state.inputSearch } }} />
-        )}
       </div>
     );
   }
