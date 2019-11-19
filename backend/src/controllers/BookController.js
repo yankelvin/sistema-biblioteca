@@ -42,7 +42,7 @@ module.exports = {
       try {
         const books = await Book.find(req.body);
         if (books.length) {
-          return res.json(books);
+          return res.status(404).json(books);
         } else {
           return res
             .status(404)

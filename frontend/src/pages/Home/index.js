@@ -23,33 +23,6 @@ export default class Home extends Component {
   render() {
     return (
       <div className="container" onMouseOver={this.onlyAdm}>
-        <Carousel>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              style={{ height: "450px" }}
-              src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1453&q=80"
-              alt="First slide"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              style={{ height: "450px" }}
-              src="https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1491&q=80"
-              alt="Second slide"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              style={{ height: "450px" }}
-              src="https://abrilexame.files.wordpress.com/2017/10/maskarad.jpg"
-              alt="Third slide"
-            />
-          </Carousel.Item>
-        </Carousel>
-
         <main role="main" className="mt-5 text-center">
           <h3>Lista de Livros Disponíveis</h3>
           <div className="album py-5 bg-light">

@@ -8,6 +8,7 @@ import CadastroLivros from "./pages/Livros/CadastroLivros";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home";
 import MyBooks from "./pages/Book/MyBooks";
+import Menu from "./pages/Menu/Menu";
 //
 
 export default function Routes() {
@@ -19,6 +20,7 @@ export default function Routes() {
         <Route path="/new/book" exact={true} component={CadastroLivros} />
         <Route path="/login" exact={true} component={Login} />
         <Route path="/mybooks" exact={true} component={MyBooks} />
+        <Route paht="/menu" exact={true} component={Menu} />
       </Switch>
     </Route>
   );

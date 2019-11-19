@@ -29,8 +29,8 @@ module.exports = {
         //return res.json({ 400: `Requisição invalida ${req.body}` });
       }
     }
-    const books = await Book.find().sort("-createdAt");
-    return res.json({ 200: books });
+    const employees = await Employee.find().sort("-createdAt");
+    return res.json({ 200: employees });
   },
   async update(req, res) {
     const employee = await Employee.findByIdAndUpdate(req.body._id, req.body);

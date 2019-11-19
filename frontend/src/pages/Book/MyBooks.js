@@ -23,10 +23,6 @@ export default class MyBooks extends Component {
   render() {
     return (
       <div className="container mt-5">
-        <div>
-          <h3 className="text-center">Livros Reservados</h3>
-        </div>
-
         <div className="row mt-5">
           {this.state.feed.reservedBooks.map(book => (
             <Book reserved={true} key={book._id} book={book}></Book>
