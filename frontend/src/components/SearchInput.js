@@ -39,7 +39,7 @@ export default class components extends Component {
             name="InputSearch"
             id="inputSearch"
             onChange={this.handleChange}
-            placeholder="Pesquisar"
+            placeholder="O que você procura?"
           />
         </form>
         {this.state.statusCode === 200 ? (
