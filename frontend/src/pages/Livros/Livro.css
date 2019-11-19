@@ -1,0 +1,13 @@
+.container-books {
+  padding-left: 20%;
+}
+
+#trash {
+  background-color: #fff;
+  color: red;
+}
+
+#update-button {
+  background-color: #fff;
+  color: green;
+}

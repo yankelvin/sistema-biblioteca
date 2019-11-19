@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 //Utils
 import api from "../../services/api";
 
+import "./Book.css";
+
 export default class Book extends Component {
   constructor(props) {
     super(props);
@@ -33,8 +35,8 @@ export default class Book extends Component {
       <div className="col-md-4">
         <div className="card mb-4 shadow-sm">
           <img
+            id="cover-img"
             src={`http://localhost:3333/api/files/${this.props.book.image}`}
-            className="card-img-top"
             alt={`${this.props.book.image}`}
           />
           <div className="card-body">
