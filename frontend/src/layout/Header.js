@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 
 // Images
-import logo from "../assets/logo.svg";
+import logo from "../assets/logo.png";
 
 // Material Ui
 import Button from "@material-ui/core/Button";
@@ -15,6 +15,10 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import ImportContactsOutlinedIcon from "@material-ui/icons/ImportContactsOutlined";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import AddBoxIcon from "@material-ui/icons/AddBox";
+import BookOutlinedIcon from "@material-ui/icons/BookOutlined";
 
 // intern components
 import SearchInput from "../components/SearchInput";
@@ -32,7 +36,6 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1,
-
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block"
@@ -85,60 +88,54 @@ export default function SearchAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Link to={"/new/employee"}>
-            <Button
-              id="btnNewEmp"
-              className={localStorage.id === _id ? "mr-3" : "mr-3 d-none"}
-              variant="contained"
-              color="default"
-              size="small"
-            >
-              Cadastro de Funcionários
-            </Button>
-          </Link>
-
-          <Link to={"/new/book"}>
-            <Button
-              className={localStorage.id === _id ? "" : "d-none"}
-              id="btnNewBook"
-              variant="contained"
-              color="default"
-              size="small"
-            >
-              Cadastro de Livros
-            </Button>
-          </Link>
-
           <Typography className={classes.title} variant="h6" noWrap align="left">
             <Link id="toth-link" to={"/"}>
-              <img src={logo} alt="logo" height="50px" width="50px" align="left" />
-              <label>Toth Biblioteca</label>
+              <img src={logo} alt="logo" width="50px" height="50px" align="left" />
             </Link>
           </Typography>
 
-          <Link to={"/mybooks"}>
-            <Button
-              id="btnAlugueis"
-              className={localStorage.id === _id ? "mr-3" : "mr-3 d-none"}
-              variant="contained"
-              color="default"
-              size="small"
-            >
-              Ver meus livros
-            </Button>
-          </Link>
+          <div className={localStorage.id === _id ? "dropdown" : "mr-3 d-none"}>
+            <span>
+              <ImportContactsOutlinedIcon />
+            </span>
+            <div className="dropdown-content">
+              <Link to={"/new/employee"}>
+                <Button id="btnNewEmp" className={localStorage.id === _id ? "mr-3" : "mr-3 d-none"}>
+                  <AddBoxIcon />
+                  Funcionário
+                </Button>
+              </Link>
+              <Link to={"/new/book"}>
+                <Button
+                  className={localStorage.id === _id ? "" : "d-none"}
+                  id="btnNewBook"
+                  variant="contained"
+                  color="default"
+                  size="small"
+                >
+                  <BookOutlinedIcon /> Novo Livro
+                </Button>
+              </Link>
 
-          <Link to={"/login"}>
-            <Button
-              className={localStorage.id === _id ? "" : "d-none"}
-              id="btnLogin"
-              variant="contained"
-              color="default"
-              size="small"
-            >
-              Sair - Trocar Usuário
-            </Button>
-          </Link>
+              <Link to={"/mybooks"}>
+                <Button
+                  id="btnAlugueis"
+                  className={localStorage.id === _id ? "mr-3" : "mr-3 d-none"}
+                  variant="contained"
+                  color="default"
+                  size="small"
+                >
+                  Ver meus livros
+                </Button>
+              </Link>
+
+              <Link to={"/login"}>
+                <Button className={localStorage.id === _id ? "" : "d-none"} id="btnLogin">
+                  <ExitToAppIcon />
+                </Button>
+              </Link>
+            </div>
+          </div>
 
           <SearchInput />
 
