@@ -6,7 +6,6 @@ import "./Header.css";
 
 // Images
 import logo from "../assets/logo.svg";
-import carrinho from "../assets/carrinho.svg";
 
 // Material Ui
 import Button from "@material-ui/core/Button";
