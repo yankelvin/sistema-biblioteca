@@ -19,9 +19,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
-  width: 10px;
-  margin-right: 50px;
-  margin-left: 50px;
+  width: 50%;
 }
 
 .dropdown-content {
@@ -36,4 +34,9 @@
 
 .dropdown:hover .dropdown-content {
   display: block;
+  max-width: 200px;
+  z-index: 10;
+}
+
+.menu-icon {
 }

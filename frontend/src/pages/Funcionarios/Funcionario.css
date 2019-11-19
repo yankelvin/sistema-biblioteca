@@ -1,0 +1,40 @@
+.container-customers {
+  padding: 20px;
+}
+#trash {
+  background-color: #fff;
+  color: red;
+  border: none;
+}
+#update {
+  background-color: #fff;
+  border: none;
+  color: green;
+}
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+#customers td,
+#customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+  background-color: #ddd;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+
+  color: black;
+}

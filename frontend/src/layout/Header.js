@@ -19,6 +19,7 @@ import ImportContactsOutlinedIcon from "@material-ui/icons/ImportContactsOutline
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import BookOutlinedIcon from "@material-ui/icons/BookOutlined";
+import GroupOutlinedIcon from "@material-ui/icons/GroupOutlined";
 
 // intern components
 import SearchInput from "../components/SearchInput";
@@ -86,56 +87,13 @@ export default function SearchAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: "#6f42c1" }}>
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap align="left">
             <Link id="toth-link" to={"/"}>
               <img src={logo} alt="logo" width="50px" height="50px" align="left" />
             </Link>
           </Typography>
-
-          <div className={localStorage.id === _id ? "dropdown" : "mr-3 d-none"}>
-            <span>
-              <ImportContactsOutlinedIcon />
-            </span>
-            <div className="dropdown-content">
-              <Link to={"/new/employee"}>
-                <Button id="btnNewEmp" className={localStorage.id === _id ? "mr-3" : "mr-3 d-none"}>
-                  <AddBoxIcon />
-                  Funcionário
-                </Button>
-              </Link>
-              <Link to={"/new/book"}>
-                <Button
-                  className={localStorage.id === _id ? "" : "d-none"}
-                  id="btnNewBook"
-                  variant="contained"
-                  color="default"
-                  size="small"
-                >
-                  <BookOutlinedIcon /> Novo Livro
-                </Button>
-              </Link>
-
-              <Link to={"/mybooks"}>
-                <Button
-                  id="btnAlugueis"
-                  className={localStorage.id === _id ? "mr-3" : "mr-3 d-none"}
-                  variant="contained"
-                  color="default"
-                  size="small"
-                >
-                  Ver meus livros
-                </Button>
-              </Link>
-
-              <Link to={"/login"}>
-                <Button className={localStorage.id === _id ? "" : "d-none"} id="btnLogin">
-                  <ExitToAppIcon />
-                </Button>
-              </Link>
-            </div>
-          </div>
 
           <SearchInput />
 
